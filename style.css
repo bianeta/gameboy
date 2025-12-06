@@ -8,7 +8,7 @@ body {
   font-size: 18px;
 }
 
-.wrappper {
+.wrapper {
   width: 100%;
   margin: 0 auto;
 }
@@ -39,21 +39,46 @@ p {
   font-size: 1.2em;
 }
 
-Button {
-  background: #fff23b;
+/* Alphabet letter buttons */
+.alphabetButtonJS,
+button {
+  background: #ddd129;
   border-radius: 5px;
   border: solid 1px white;
-  color: white;
+  color: rgb(2, 1, 1);
   width: 35px;
   height: 35px;
   margin: 0 10px 10px 0;
   outline: none;
 }
-Button:hover {
-  transition: 0.5s;
+.alphabetButtonJS:hover,
+button:hover {
+  transition: 0.2s;
   background: white;
   border: solid 1px white;
   color: #f84c9c;
+}
+
+/* Keyboard-style layout for alphabet */
+#alphabetButtons {
+  display: inline-block;
+  text-align: center;
+  margin: 10px 0 20px;
+}
+.kb-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.alphabetButtonJS {
+  min-width: 40px;
+  padding: 6px 8px;
+  font-size: 16px;
+}
+.alphabetButtonJS:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .selected {
@@ -79,7 +104,7 @@ Button:hover {
 }
 .btn-2:hover {
   transition: 0.5s;
-  background: white;
+  background: rgb(26, 10, 10);
   border: solid 1px white;
-  color: #c1d72e;
+  color: #d3c82d;
 }

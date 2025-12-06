@@ -2,38 +2,35 @@
 
     console.log("JavaScript file loaded successfully!");
 
-//const
-
-const container= document.getAnimations("alpahabetButtons");
-var answerDisplay = document.getElementById ("hold");
-var answer = "";
-var hint = "";
-var life = 10;
-var wordDisplay= [];
-var winningCheck = "";
-const containerHint= document.getElementById("clue");
-const buttonHint = document.getElementById ("reset");
-const buttonReset =  document.getElementById("mylives");
-var myStickman=document.getElementById("stickman");
-var context = myStickman.getContext("2d");
+    // Elements and state
+    const container = document.getElementById("alphabetButtons");
+    var answerDisplay = document.getElementById("hold");
+    var answer = "";
+    var hint = "";
+    var life = 10;
+    var wordDisplay = [];
+    var winningCheck = "";
+    const containerHint = document.getElementById("clue");
+    const buttonHint = document.getElementById("hint");
+    const buttonReset = document.getElementById("reset");
+    const livesDisplay = document.getElementById("mylives");
+    var myStickman = document.getElementById("stickman");
+    var context = myStickman && myStickman.getContext ? myStickman.getContext("2d") : null;
 
 //generate alphabet buttton
 function generateButton () {
-var buttonsHTML = "abcdefghijklmnopqrstuvwxyz"
-.split("")
-.map(
-    (letter)=>
-        `<button
-         class = "alphabetButtonJS" 
-         id="${letter}"
-         >
-        ${letter}
-               </button>`
+  // Render letters in keyboard rows (qwerty) instead of a single row
+  const rows = [
+    'qwertyuiop',
+    'asdfghjkl',
+    'zxcvbnm'
+  ];
 
-)
-.join("");
-
-return buttonsHTML;
+  return rows.map(r => {
+    return `<div class="kb-row">${r.split("").map(letter => `
+      <button class="alphabetButtonJS" id="${letter}">${letter}</button>
+    `).join("")}</div>`;
+  }).join("");
 }
 
 function handleClick(event) {
@@ -41,8 +38,12 @@ function handleClick(event) {
   if (isButton) {
     //console.dir(event.target.id);
     //console.log(isButton);
-    const buttonId = document.getElementById(event.target.id);
-    buttonId.classList.add("selected");
+    const buttonEl = event.target;
+    buttonEl.classList.add("selected");
+    // disable the button so it can't be clicked again
+    buttonEl.disabled = true;
+    // forward to guess handler immediately
+    if (typeof guess === 'function') guess(event);
   }
   return;
 }
@@ -56,41 +57,39 @@ const question =[
 
 const categories = [
   [
-    "everton",
-    "liverpool",
-    "swansea",
-    "chelsea",
-    "hull",
-    "manchester-city",
-    "newcastle-united"
-  ],
-  ["alien", "dirty-harry", "gladiator", "finding-nemo", "jaws"],
-  ["manchester", "milan", "madrid", "amsterdam", "prague"]
+    "katseye",
+    "taylorswift",
+    "mariahcarey",
+    "adele",
+    "brandonlake",
+    "josiahqueen",
+    "SZA" ],
+  ["the-hunger-games", "meangirls", "scream", "finding-nemo", "aladdin"],
+  ["twilight", "animalfarm", "percy-jackson", "the-book-theif", "divergent"]
 ];
 
 const hints = [
   [
-    "Based in Mersyside",
-    "Based in Mersyside",
-    "First Welsh team to reach the Premier Leauge",
-    "Owned by A russian Billionaire",
-    "Once managed by Phil Brown",
-    "2013 FA Cup runners up",
-    "Gazza's first club"
-  ],
+    "Global girl group ( song ex. touch)",
+    "The number 13",
+    "She defrosts every Christmas",
+    "Hello from the other side",
+    "Christian artist(song ex. Grattitude)",
+        "Christian artist(song ex. The Prodial)",
+      "Saturn"  ],
   [
-    "Science-Fiction horror film",
-    "1971 American action film",
-    "Historical drama",
+    "District 12",
+    "On wednesdays we wear pink",
+    "Ghostface",
     "Anamated Fish",
-    "Giant great white shark"
+    "Magic carpet"
   ],
   [
-    "Northern city in the UK",
-    "Home of AC and Inter",
-    "Spanish capital",
-    "Netherlands capital",
-    "Czech Republic capital"
+    "Vampire vs Werewolf",
+    "George Orwell",
+    "Look I didn't want to be a half-blood",
+    "Narrated by Death",
+    "Dauntless"
   ]
 ];
 
@@ -148,7 +147,8 @@ function init() {
   //console.log(hint);
 }
 
-window.onload = init();
+// Assign init as the onload handler (don't call it immediately)
+window.onload = init;
 
 //reset (play again)
 buttonReset.addEventListener("click", init);
@@ -200,7 +200,8 @@ function guess(event) {
   }
 }
 
-container.addEventListener("click", guess);
+// Removed the separate guess listener because handleClick now calls guess()
+// container.addEventListener("click", guess);
 
 // Hangman
 function animate() {
