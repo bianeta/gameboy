@@ -1,0 +1,195 @@
+@import url('https://hc-cdn.hel1.your-objectstorage.com/s/v3/0f8a20cef93bacb7f9e79236fdb760fa22ad34ba_vase_of_flowers_2003.38.1.jpg');
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-x: hidden;
+  background-color: rgb(14, 14, 14);
+
+  transition: all 1s;
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+}
+
+#container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  gap: 0;
+  border: 6px double rgb(255, 145, 0);
+}
+
+#title {
+  color: white;
+  transform: rotateZ(-90deg);
+  
+  margin-left: -20%;
+  margin-right: -15%;
+  
+  width: 40%;
+  height: 15%;
+
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  #title {
+    margin-right: -12%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1000px) {
+  #title {
+    margin-right: -12%;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 800px) {
+  #title {
+    margin-right: -10%;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  #title {
+    margin-right: -10%;
+    font-size: 8px;
+  }
+}
+
+
+.piece {
+  width: 15vh;
+  aspect-ratio: 1 / 1;
+  background-size: 100%;
+
+  transition: 1s all;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top {
+  width: 80%;
+  height: 15%;
+  top: 0%;
+
+  background-image: url(https://hc-cdn.hel1.your-objectstorage.com/s/v3/0f8a20cef93bacb7f9e79236fdb760fa22ad34ba_vase_of_flowers_2003.38.1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25%;
+}
+
+.botm {
+  width: 80%;
+  height: 15%;
+  bottom: 0%;
+
+  background-image: url("https://hc-cdn.hel1.your-objectstorage.com/s/v3/0f8a20cef93bacb7f9e79236fdb760fa22ad34ba_vase_of_flowers_2003.38.1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25%;
+}
+
+.left {
+  width: 15%;
+  height: 80%;
+  left: 0%;
+
+  background-image: url("https://hc-cdn.hel1.your-objectstorage.com/s/v3/0f8a20cef93bacb7f9e79236fdb760fa22ad34ba_vase_of_flowers_2003.38.1.jpg");
+  background-position: down center;
+  background-repeat: no-repeat;
+  background-size: 150%;
+}
+
+.right {
+  width: 15%;
+  height: 80%;
+  right: 0%;
+
+  background-image: url("https://hc-cdn.hel1.your-objectstorage.com/s/v3/0f8a20cef93bacb7f9e79236fdb760fa22ad34ba_vase_of_flowers_2003.38.1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 150%;
+}
+
+.side {
+  transition: all 0.5s;
+  position: absolute;
+  background-color: white;
+  opacity: 0%;
+}
+
+.side:hover {
+
+  cursor: pointer;
+  opacity: 65%;
+
+}
+
+.center {
+  width: 40%;
+  height: 40%;
+
+  transition: all 0.5s;
+
+  background-image: url("https://hc-cdn.hel1.your-objectstorage.com/s/v3/0f8a20cef93bacb7f9e79236fdb760fa22ad34ba_vase_of_flowers_2003.38.1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+
+  background-color: white;
+  opacity: 0%;
+  border-radius: 50%;
+}
+
+.center:hover {
+  opacity: 65%;
+  cursor: pointer;
+}
+
+#rotateBody {
+  margin-right: 2%;
+  animation: blinkBack 2s infinite;
+  transform: scale(1.2);
+  position: relative;
+}
+
+#rotateBody::before{
+  content: "(click me)";
+  position: absolute;
+  font-size: 0.4em;
+  bottom: -20%;
+  left: 22%;
+
+}
+
+#rotateBody:hover {
+  cursor: pointer;
+}
+
+@keyframes blinkBack {
+  0% {
+    color: white;
+  }
+  50% {
+    color: rgb(255, 145, 0);
+  }
+  100% {
+    color: white;
+  }
+}
