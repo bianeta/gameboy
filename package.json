@@ -1,8 +1,2 @@
-{
-  "name": "gameboy",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "typecheck": "tsc -p ./tsconfig.json"
-  }
-}
+
+
