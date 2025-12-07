@@ -1,0 +1,26 @@
+html {
+    cursor: url('images/sparkle.png'), auto;
+}
+
+.drawer-container {
+  width: 460px;       /* match your drawer image width */
+  margin: 16px auto;
+  position: relative; /* important: makes overlay coordinates relative to drawer */
+}
+
+.drawer-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.drawer-item {
+  position: absolute;
+  left: 50%;          /* change this to move horizontally */
+  top: 58%;           /* change this to move vertically */
+  transform: translate(-50%, -50%);
+  width: 120px;       /* change size of the gameboy */
+  height: auto;
+  pointer-events: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
