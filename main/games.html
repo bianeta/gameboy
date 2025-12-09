@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="idk.css">
 
     <title>Gameboy</title>
+    <style>
+      /* make both game images the same visible size */
+      .game-img {
+        width: 260px;
+        height: auto;
+        display: inline-block;
+        margin: 8px 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+
+      /* small responsive adjustment */
+      @media (max-width:480px) { .game-img { width: 42vw; } }
+    </style>
   </head>
 
   <body>
@@ -17,5 +30,9 @@
     </p>
     <p>Click on one of the images/games to get started.</p>
 
-<a href="hm.html" title="  Hangman" ><img class="Hangman" src="../images/hanman.png" alt="Hangaman" /></a>
-<a href="puzzle/puz.html" title="Puzzle"><img class="Puzzle" src="../images/puzzle.png" alt="Puzzle" /></a>
+<a href="hm.html" title="Hangman"><img class="game-img Hangman" src="../images/hanman.png" alt="Hangman" /></a>
+<a href="puzzle/puz.html" title="Puzzle"><img class="game-img Puzzle" src="../images/puzzle.png" alt="Puzzle" /></a>
+
+ <p class="back-link"><a href="drawerinside.html">Back to drawer</a></p>
+</body>
+</html>

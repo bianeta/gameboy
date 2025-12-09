@@ -1,54 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../style.css">
-    <title>Inside the Drawer</title>
-    <style>
-      /* Final clean drawerinside.html: every item links to its page and is visible */
-      .drawer-container {
-        width: 480px;
-        margin: 14px auto;
-        position: relative;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      }
-      .drawer-image { display:block; width:100%; height:auto; z-index:1 }
-      .drawer-item { position:absolute; z-index:2; height:auto; user-select:none; box-shadow:0 4px 10px rgba(0,0,0,0.25); transition:transform 120ms ease }
-      .drawer-item:hover { transform: translateZ(0) scale(1.03); }
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="../style.css">
+		<title>Inside the Drawer</title>
+		<style>
+			/* Restored to the earlier working layout used during the session.
+				 Items are positioned and sized to visually sit in the drawer. */
+			.drawer-container {
+				width: 460px; /* match drawer image width */
+				margin: 16px auto;
+				position: relative;
+				font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+			}
 
-      /* Restored, visible placements */
-      .playbill { left:18%; top:16%; width:120px; transform:translate(-50%,-50%) rotate(-8deg); z-index:7 }
-      .gameboy { left:56%; top:30%; width:140px; transform:translate(-50%,-50%) rotate(-6deg); z-index:8 }
-      .sticker { left:72%; top:28%; width:78px; transform:translate(-50%,-50%) rotate(-4deg); z-index:7 }
-      .earbuds { left:78%; top:42%; width:78px; transform:translate(-50%,-50%) rotate(6deg); z-index:7 }
-      .markers { left:56%; top:72%; width:150px; transform:translate(-50%,-50%) rotate(-2deg); z-index:5 }
-      .crumpled { left:42%; top:68%; width:60px; transform:translate(-50%,-50%) rotate(8deg); z-index:9 }
-      .pin { left:62%; top:48%; width:36px; transform:translate(-50%,-50%) rotate(-10deg); z-index:9 }
+			.drawer-image { display: block; width: 100%; height: auto; z-index: 1; }
 
-      .page-header { text-align:center; margin-top:6px }
-      .back-link { text-align:center; margin-top:12px }
+			.drawer-item { position: absolute; z-index: 2; height: auto; user-select: none; box-shadow: 0 4px 10px rgba(0,0,0,0.25); transition: transform 140ms ease; }
+			.drawer-item:hover { transform: translateZ(0) scale(1.03); }
 
-      @media (max-width:520px){ .drawer-container{width:92%} .gameboy{width:28vw} .markers{width:32vw} }
-    </style>
-  </head>
-  <body>
-    <h1 class="page-header">Inside the Drawer</h1>
-    <p style="text-align:center; max-width:640px; margin:0 auto 10px">Click any object to see whats inside. ( Some of the objects are trying to float out the drawer. Just ingnore it :) ) </p>
+			/* original-style placements (as they were earlier) */
+			.playbill { left: 18%; top: 40%; width: 110px; transform: translate(-50%, -50%) rotate(-8deg); z-index: 5; }
+			.gameboy { left: 56%; top: 34%; width: 130px; transform: translate(-50%, -50%) rotate(-6deg); z-index: 6; }
+			.sticker { left: 72%; top: 30%; width: 72px; transform: translate(-50%, -50%) rotate(-4deg); z-index: 6; }
+			.earbuds { left: 78%; top: 48%; width: 72px; transform: translate(-50%, -50%) rotate(6deg); z-index: 6; }
+			.markers { left: 56%; top: 75%; width: 135px; transform: translate(-50%, -50%) rotate(-2deg); z-index: 3; }
+			.crumpled { left: 42%; top: 70%; width: 90px; transform: translate(-50%, -50%) rotate(8deg); z-index: 7; }
+			.pin { left: 52%; top: 44%; width: 28px; transform: translate(-50%, -50%) rotate(-10deg); z-index: 8; }
 
-    <div class="drawer-container">
-      <img class="drawer-image" src="../images/emptydrawer.png" alt="Empty Drawer" />
+			.page-header { text-align: center; margin-top: 6px; }
+			.back-link { text-align: center; margin-top: 12px; }
 
-      <!-- links mapped to pages in main/ -->
-      <a href="playbill.html" title="Playbill"><img class="drawer-item playbill" src="../images/playbill.jpeg" alt="Playbill" /></a>
-      <a href="games.html" title="Gameboy / Games"><img class="drawer-item gameboy" src="../images/gameboy.png" alt="Gameboy" /></a>
-      <a href="sticker.html" title="Sticker"><img class="drawer-item sticker" src="../images/sticker.png" alt="Sticker" /></a>
-      <a href="eb.html" title="Earbuds"><img class="drawer-item earbuds" src="../images/eb.png" alt="Earbuds" /></a>
-      <a href="marker.html" title="Markers"><img class="drawer-item markers" src="../images/marker.png" alt="Markers" /></a>
-      <a href="poster.html" title="Crumpled paper / Poster"><img class="drawer-item crumpled" src="../images/crumpledp.png" alt="Crumpled paper" /></a>
-      <a href="pin.html" title="Pin"><img class="drawer-item pin" src="../images/pin.png" alt="Pin" /></a>
-    </div>
+			@media (max-width: 520px) {
+				.drawer-container { width: 92%; }
+				.gameboy { width: 28vw; }
+				.markers { width: 32vw; }
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="page-header">Inside the Drawer</h1>
+		<p style="text-align:center; max-width:640px; margin:0 auto 8px;">Here's what's inside the drawer — items restored to their earlier positions. Tell me if you'd like any small nudges.</p>
 
-    <p class="back-link"><a href="idk.html">Back to drawer</a></p>
-  </body>
+		<div class="drawer-container">
+			<!-- drawer background -->
+			<img class="drawer-image" src="../images/emptydrawer.png" alt="Empty Drawer" />
+
+			<!-- playbill (left) -->
+			<a href="playbill.html" title="Open playbill"><img class="drawer-item playbill" src="../images/playbill.jpeg" alt="Playbill" /></a>
+
+			<!-- gameboy (center-right) -->
+			<a href="games.html" title="Open gameboy"><img class="drawer-item gameboy" src="../images/gameboy.png" alt="Gameboy" /></a>
+
+			<!-- sticker (top-right) -->
+			<a href="sticker.html" title="Sticker"><img class="drawer-item sticker" src="../images/sticker.png" alt="Sticker" /></a>
+
+			<!-- earbuds (right) -->
+			<a href="eb.html" title="Earbuds"><img class="drawer-item earbuds" src="../images/eb.png" alt="Earbuds" /></a>
+
+			<!-- markers stack (bottom-center) -->
+			<a href="marker.html" title="Markers"><img class="drawer-item markers" src="../images/marker.png" alt="Markers" /></a>
+
+			<!-- crumpled paper (above markers, slightly left) -->
+			<a href="poster.html" title="Crumpled paper"><img class="drawer-item crumpled" src="../images/crumpledp.png" alt="Crumpled paper" /></a>
+
+			<!-- small pin (near gameboy) -->
+			<a href="pin.html" title="Pin"><img class="drawer-item pin" src="../images/pin.png" alt="Pin" /></a>
+		</div>
+
+		<p class="back-link"><a href="idk.html">Back to drawer</a></p>
+	</body>
 </html>
-</html>
+  
